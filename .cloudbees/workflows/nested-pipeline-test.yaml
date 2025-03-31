@@ -1,0 +1,24 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Nested Pipeline Test
+on:
+  push:
+    branches:
+      - "**"
+  workflow_dispatch:
+permissions:
+  scm-token-own: read
+  scm-token-org: read
+  id-token: write
+jobs:
+  test:
+    steps:
+      - name: Run Jenkins Job
+        kind: test
+        uses: cloudbees-io/jenkins-run-job@v2
+        continue-on-error: true
+        with:
+          url: https://sda.preview.cb-demos.io/bcauthen-demos-mc-1/
+          username: ${{ secrets.WES_JENKINS_USERNAME }}
+          token: ${{ secrets.WES_JENKINS_TOKEN }}
+          job-name: Jenkins Pipeline 1
