@@ -21,4 +21,4 @@ jobs:
           url: https://sda.preview.cb-demos.io/bcauthen-demos-mc-1/
           username: ${{ secrets.WES_JENKINS_USERNAME }}
           token: ${{ secrets.WES_JENKINS_TOKEN }}
-          job-name: Jenkins Pipeline 1
+          job-name: JenkinsPipeline1
